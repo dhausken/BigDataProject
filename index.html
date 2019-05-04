@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<div id="map" style="position: relative; width: 1800px; height: 1000px;"></div>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="http://d3js.org/topojson.v1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/datamaps/0.4.4/datamaps.usa.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
+<p><a href="http://datamaps.github.io/">DataMaps Project Homepage</a></p>
+<script src="//cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
+<script>
+    var bubble_map = new Datamap({
+        element: document.getElementById("map"),
+        scope: 'usa',
+        done: function(datamap) {
+            datamap.svg.selectAll('.datamaps-subunit').on('click', function(geography) {
+               console.log(geography.properties.name);
+            });
+        }
+    });
+
+
+</script>
+</html>
