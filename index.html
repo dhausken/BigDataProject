@@ -6,19 +6,25 @@
 <script src="http://d3js.org/topojson.v1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/datamaps/0.4.4/datamaps.usa.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
-<p><a href="http://datamaps.github.io/">DataMaps Project Homepage</a></p>
 <script src="//cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script>
     var bubble_map = new Datamap({
-        element: document.getElementById("map"),
-        scope: 'usa',
-        done: function(datamap) {
-            datamap.svg.selectAll('.datamaps-subunit').on('click', function(geography) {
-               console.log(geography.properties.name);
-            });
-        }
-    });
+    element: document.getElementById("map"),
+    scope: 'usa',
+    done: function(datamap) {
+        datamap.svg.selectAll('.datamaps-subunit').on('click', function(geography) {
+            console.log(geography.properties.name);
+            if (window.XMLHttpRequest) {
+                let xmlhttp = new XMLHttpRequest();
+                xmlhttp.open("GET", "/clicked?STATE=" + geography.properties.name, true);
+                xmlhttp.send(null);
 
-
+            } else {
+                let xmlhttp = false;
+            }
+        });
+    }
+});
 </script>
 </html>

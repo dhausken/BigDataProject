@@ -16,5 +16,12 @@
     <orderEntry type="library" name="datamaps.usa" level="application" />
     <orderEntry type="library" name="datamaps.afg" level="application" />
     <orderEntry type="library" name="datamaps.world" level="application" />
+    <orderEntry type="library" name="R User Library" level="project" />
+    <orderEntry type="library" name="R Skeletons" level="application" />
+    <orderEntry type="library" name="d3.v3" level="application" />
+    <orderEntry type="library" name="topojson.v1" level="application" />
+    <orderEntry type="library" name="datamaps.usa" level="application" />
+    <orderEntry type="library" name="d3" level="application" />
+    <orderEntry type="library" name="topojson" level="application" />
   </component>
 </module>

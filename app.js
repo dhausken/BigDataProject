@@ -3,6 +3,9 @@ const fs = require('fs');
 
 const hostname = '127.0.0.1';
 const port = 3000;
+const MongoClient = require('mongodb').MongoClient;
+
+MongoClient.connect()
 
 fs.readFile('index.html',(err, html) => {
     if(err){

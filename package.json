@@ -3,13 +3,18 @@
   "version": "1.0.0",
   "description": "Project for big data",
   "main": "app.js",
+  "server": "./bin/crest",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "crest"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "crest": "https://github.com/ledsun/crest.git",
     "datamaps": "^0.5.9",
-    "jquery": "^3.4.0"
+    "express": "^4.16.4",
+    "jquery": "^3.4.0",
+    "mongodb": "^3.2.3"
   }
 }
