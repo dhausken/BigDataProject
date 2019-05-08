@@ -17,13 +17,18 @@
             console.log(geography.properties.name);
             if (window.XMLHttpRequest) {
                 let xmlhttp = new XMLHttpRequest();
-                xmlhttp.open("GET", "/clicked?STATE=" + geography.properties.name, true);
+                xmlhttp.open("GET", "/clicked?STATE=" + geography.properties.name + "&", true);
                 xmlhttp.send(null);
 
             } else {
                 let xmlhttp = false;
             }
         });
+        var fromServer = fetch('http://localhost:8080/', fetchData)
+            .then(response => response.json())
+            .then(response => {
+                console.log(response.message);
+            })
     }
 });
 </script>
