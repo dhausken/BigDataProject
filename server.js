@@ -26,7 +26,10 @@ MongoClient.connect(url, (err, db) => {
     app.get('/clicked',function (req, res) {
         console.log("Res Output:");
         console.log(JSON.stringify(req.query.STATE));
-        dbo.collection("deaths").findOne({}, function(err, result) {
+        console.log(JSON.stringify(req.query.YEAR));
+        console.log(JSON.stringify(req.query.CAUSE));
+        var query = { State: req.query.STATE};
+        dbo.collection("deaths").find(query).toArray(function(err, result) {
             if (err) throw err;
             console.log(result);
         });

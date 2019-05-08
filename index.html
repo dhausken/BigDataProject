@@ -15,9 +15,13 @@
     done: function(datamap) {
         datamap.svg.selectAll('.datamaps-subunit').on('click', function(geography) {
             console.log(geography.properties.name);
+            var e = document.getElementById("year");
+            var year = e.options[e.selectedIndex].value;
+            var e2 = document.getElementById("cause");
+            var cause = e2.options[e.selectedIndex].value;
             if (window.XMLHttpRequest) {
                 let xmlhttp = new XMLHttpRequest();
-                xmlhttp.open("GET", "/clicked?STATE=" + geography.properties.name + "&", true);
+                xmlhttp.open("GET", "/clicked?STATE=" + geography.properties.name + "&YEAR=" + year + "&CAUSE=" + cause, true);
                 xmlhttp.send(null);
 
             } else {
@@ -32,4 +36,43 @@
     }
 });
 </script>
+<label>
+    <select id="year">
+        <option value=""></option>
+        <option value="1999">1999</option>
+        <option value="2000">2000</option>
+        <option value="2001">2001</option>
+        <option value="2002">2002</option>
+        <option value="2003">2003</option>
+        <option value="2004">2004</option>
+        <option value="2005">2005</option>
+        <option value="2006">2006</option>
+        <option value="2007">2007</option>
+        <option value="2008">2008</option>
+        <option value="2009">2009</option>
+        <option value="2010">2010</option>
+        <option value="2011">2011</option>
+        <option value="2012">2012</option>
+        <option value="2013">2013</option>
+        <option value="2014">2014</option>
+        <option value="2015">2015</option>
+        <option value="2016">2016</option>
+    </select>
+</label>
+<label>
+    <select id="cause">
+        <option value=""></option>
+        <option value="All causes">All causes</option>
+        <option value="Alzheimer's disease">Alzheimer's disease</option>
+        <option value="Cancer">Cancer</option>
+        <option value="CLRD">CLRD</option>
+        <option value="Diabetes">Diabetes</option>
+        <option value="Heart disease">Heart disease</option>
+        <option value="Influenza and pneumonia">Influenza and pneumonia</option>
+        <option value="Kidney disease">Kidney disease</option>
+        <option value="Stroke">Stroke</option>
+        <option value="Suicide">Suicide</option>
+        <option value="Unintentional injuries">Unintentional injuries</option>
+    </select>
+</label>
 </html>
