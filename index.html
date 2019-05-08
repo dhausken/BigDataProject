@@ -27,6 +27,25 @@
                     if(xmlhttp.readyState===4)
                     {
                         console.log(xmlhttp.responseText);
+                        let data = JSON.parse(xmlhttp.responseText);
+                        alert(data[0].Year + "," + data[0].State + "," + data[0]["Cause Name"] + "," + data[0].Deaths);
+                        let table = document.getElementById("myTable");
+                        let row = table.insertRow(-1);
+                        let stateCell = row.insertCell(0);
+                        let yearCell = row.insertCell(1);
+                        let codCell = row.insertCell(2);
+                        let scodCell = row.insertCell(3);
+                        let deathsCell = row.insertCell(4);
+                        let aadrCell = row.insertCell(5);
+                        stateCell.innerHTML = data[0].State;
+                        yearCell.innerHTML = data[0].Year;
+                        codCell.innerHTML = data[0]["Cause Name"];
+                        scodCell.innerHTML = data[0]["113 Cause Name"];
+                        deathsCell.innerHTML = data[0].Deaths;
+                        aadrCell.innerHTML = data[0]["Age-adjusted Death Rate"];
+
+                        //console.log(data);
+
                     }
                 };
                 xmlhttp.send(null);
@@ -40,8 +59,11 @@
             .then(response => {
                 console.log(response);
             });
+
+
     }
 });
+
 </script>
 <label>
     <select id="year">
@@ -80,5 +102,27 @@
         <option value="Unintentional injuries">Unintentional injuries</option>
     </select>
 </label>
-<span id="output">Testing</span>
-</html>
+<table id="myTable">
+    <tr>
+        <th>State</th>
+        <th>Year</th>
+        <th>Cause of Death</th>
+        <th>Specific Cause of Death</th>
+        <th>Deaths</th>
+        <th>Age-Adjusted Death Rate</th>
+    </tr>
+</table>
+<style>
+    table, td, th {
+        border: 1px solid black;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th {
+        height: 50px;
+    }
+</style>
