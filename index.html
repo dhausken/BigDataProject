@@ -15,10 +15,11 @@
     done: function(datamap) {
         datamap.svg.selectAll('.datamaps-subunit').on('click', function(geography) {
             console.log(geography.properties.name);
-            var e = document.getElementById("year");
+            let e = document.getElementById("year");
             var year = e.options[e.selectedIndex].value;
             var e2 = document.getElementById("cause");
-            var cause = e2.options[e.selectedIndex].value;
+            var cause = e2.options[e2.selectedIndex].value;
+            console.log(cause);
             if (window.XMLHttpRequest) {
                 let xmlhttp = new XMLHttpRequest();
                 xmlhttp.open("GET", "/clicked?STATE=" + geography.properties.name + "&YEAR=" + year + "&CAUSE=" + cause, true);
@@ -38,7 +39,6 @@
 </script>
 <label>
     <select id="year">
-        <option value=""></option>
         <option value="1999">1999</option>
         <option value="2000">2000</option>
         <option value="2001">2001</option>
@@ -61,7 +61,6 @@
 </label>
 <label>
     <select id="cause">
-        <option value=""></option>
         <option value="All causes">All causes</option>
         <option value="Alzheimer's disease">Alzheimer's disease</option>
         <option value="Cancer">Cancer</option>

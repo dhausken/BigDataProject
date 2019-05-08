@@ -26,9 +26,10 @@ MongoClient.connect(url, (err, db) => {
     app.get('/clicked',function (req, res) {
         console.log("Res Output:");
         console.log(JSON.stringify(req.query.STATE));
-        console.log(JSON.stringify(req.query.YEAR));
+        console.log(req.query.YEAR);
         console.log(JSON.stringify(req.query.CAUSE));
-        var query = { State: req.query.STATE};
+        let temp = req.query.YEAR;
+        var query = { State: req.query.STATE, Year: req.query.YEAR, 'Cause Name': req.query.CAUSE};
         dbo.collection("deaths").find(query).toArray(function(err, result) {
             if (err) throw err;
             console.log(result);
