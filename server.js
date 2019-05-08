@@ -33,9 +33,11 @@ MongoClient.connect(url, (err, db) => {
         dbo.collection("deaths").find(query).toArray(function(err, result) {
             if (err) throw err;
             console.log(result);
+            res.send(result);
         });
     })
 });
+
 
 // serve the homepage
 app.get('/', (req, res) => {
