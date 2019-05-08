@@ -28,7 +28,6 @@
                     {
                         console.log(xmlhttp.responseText);
                         let data = JSON.parse(xmlhttp.responseText);
-                        alert(data[0].Year + "," + data[0].State + "," + data[0]["Cause Name"] + "," + data[0].Deaths);
                         let table = document.getElementById("myTable");
                         let row = table.insertRow(-1);
                         let stateCell = row.insertCell(0);
@@ -38,12 +37,46 @@
                         let deathsCell = row.insertCell(4);
                         let aadrCell = row.insertCell(5);
                         stateCell.innerHTML = data[0].State;
-                        yearCell.innerHTML = data[0].Year;
+                        if(data.length > 1)
+                        {
+                            yearCell.innerHTML = "All Years";
+                        }
+                        else
+                        {
+                            yearCell.innerHTML = data[0].Year;
+                        }
                         codCell.innerHTML = data[0]["Cause Name"];
                         scodCell.innerHTML = data[0]["113 Cause Name"];
-                        deathsCell.innerHTML = data[0].Deaths;
-                        aadrCell.innerHTML = data[0]["Age-adjusted Death Rate"];
+                        if(data.length > 1)
+                        {
+                            console.log("Hello");
+                            let total = 0;
+                            for(let i = 0; i < data.length; i++)
+                            {
+                                total += data[i].Deaths;
+                            }
+                            deathsCell.innerHTML = total;
+                        }
+                        else
+                        {
+                            deathsCell.innerHTML = data[0].Deaths;
+                        }
 
+                        if(data.length > 1)
+                        {
+                            console.log("Hello");
+                            let total = 0;
+                            for(let i = 0; i < data.length; i++)
+                            {
+                                total += data[i]["Age-adjusted Death Rate"];
+                            }
+                            total /= data.length;
+                            aadrCell.innerHTML = total;
+                        }
+                        else
+                        {
+                            aadrCell.innerHTML = data[0]["Age-adjusted Death Rate"];
+                        }
                         //console.log(data);
 
                     }
@@ -67,6 +100,7 @@
 </script>
 <label>
     <select id="year">
+        <option value="All Years">All Years</option>
         <option value="1999">1999</option>
         <option value="2000">2000</option>
         <option value="2001">2001</option>

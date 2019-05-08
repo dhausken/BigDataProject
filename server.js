@@ -29,7 +29,15 @@ MongoClient.connect(url, (err, db) => {
         console.log(req.query.YEAR);
         console.log(JSON.stringify(req.query.CAUSE));
         let temp = req.query.YEAR;
-        var query = { State: req.query.STATE, Year: parseInt(req.query.YEAR), 'Cause Name': req.query.CAUSE};
+        var query;
+        if(req.query.YEAR === "All Years")
+        {
+            query = { State: req.query.STATE, 'Cause Name': req.query.CAUSE};
+        }
+        else
+        {
+            query = { State: req.query.STATE, Year: parseInt(req.query.YEAR), 'Cause Name': req.query.CAUSE};
+        }
         dbo.collection("deaths").find(query).toArray(function(err, result) {
             if (err) throw err;
             console.log(result);
